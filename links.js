@@ -17,16 +17,9 @@
   // (Ojo: fraccionar solo evita que un buscador de texto lea la URL completa;
   //  no es seguridad. Quien abra este archivo o mire la red la verá igual.)
   var LINKS = {
-    exclusivo: ['https://', 'tu-enlace', '-aqui.com'],
-    instagram: 'https://www.instagram.com/tuusuario/',
-    tiktok:    'https://www.tiktok.com/@tuusuario',
-    x:         'https://x.com/tuusuario',
-    telegram:  'https://t.me/tuusuario',
-    youtube:   'https://www.youtube.com/@TuCanal',
-    facebook:  'https://www.facebook.com/tuusuario',
-    threads:   'https://www.threads.net/@tuusuario',
-    propinas:  'https://tu-enlace-aqui.com',
-    enlace:    'https://tu-enlace-aqui.com'
+    exclusivo: ['https://', 'openinap', 'p.link/6amke'],
+    instagram: 'https://www.instagram.com/bel.psico_/',
+   
   };
 
   // Botones en el orden en que aparecen. Borra los que no uses.
@@ -37,16 +30,9 @@
   //   img  = (opcional) foto de tarjeta grande: pega aquí la URL de tu imagen de Blogger
   //   gate = true muestra primero el aviso +18
   var BOTONES = [
-    { k: 'p1',  l: 'Contenido exclusivo 🔒', slug: 'exclusivo', img: 'URL-DE-TU-TARJETA', gate: true },
+    { k: 'p1',  l: 'Agenda tu consulta 🩵🤫', slug: 'exclusivo', img: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg04l7891rRn5-TYUWXCpjmnePSDbPjBbbKuIuOYu4wO539ZWtUBjn27TrnBy340YNAPNVIjRSV45a23xg-FSE37UFkZwnlqXRAqVliSet26qasBRYtfuvV3DO3qywwBX5BMPhnN7ecuaLa3MwKoLomESxmfC3m4o0oqDlHAOFxyHm5ocSsAIVY6O22yYDO/s320/tarjeta1.webp', gate: true },
     { k: 'p2',  l: 'Instagram',              slug: 'instagram' },
-    { k: 'p3',  l: 'TikTok',                 slug: 'tiktok' },
-    { k: 'p4',  l: 'X (Twitter)',            slug: 'x' },
-    { k: 'p5',  l: 'Telegram',               slug: 'telegram' },
-    { k: 'p9',  l: 'Mi canal de YouTube',    slug: 'youtube' },
-    { k: 'p10', l: 'Facebook',               slug: 'facebook' },
-    { k: 'p11', l: 'Threads',                slug: 'threads' },
-    { k: 'p7',  l: 'Apóyame 🐷',             slug: 'propinas' },
-    { k: 'p8',  l: 'Mi otro enlace',         slug: 'enlace' }
+  
   ];
 
   // ===============================================================
