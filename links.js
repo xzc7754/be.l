@@ -30,7 +30,7 @@
   //   img  = (opcional) foto de tarjeta grande: pega aquí la URL de tu imagen de Blogger
   //   gate = true muestra primero el aviso +18
   var BOTONES = [
-    { k: 'p1',  l: 'Agenda tu consulta 🩵🤫', slug: 'exclusivo', img: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg04l7891rRn5-TYUWXCpjmnePSDbPjBbbKuIuOYu4wO539ZWtUBjn27TrnBy340YNAPNVIjRSV45a23xg-FSE37UFkZwnlqXRAqVliSet26qasBRYtfuvV3DO3qywwBX5BMPhnN7ecuaLa3MwKoLomESxmfC3m4o0oqDlHAOFxyHm5ocSsAIVY6O22yYDO/s320/tarjeta1.webp', gate: true },
+    { k: 'p1',  l: 'Agenda tu consulta 🩵🤫', slug: 'exclusivo', img: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEilXrHSXIxzECSrgOx0mBEjRz81TynZd7CkE6c7SmMNY8-0vqsyOEC-YDMmJJjcNo-8yur-XcyGWtkb2RkVcQ8Hegq8d3Fc4WP2hFC1EDmpWU_fNCAVQdtZVBG_6UcDBwu5HjFn29jH4Odhu5HdaA1xwEj7nxEpoCySKIFZnrhFZZkd7X70mpDwHFw5waev/s1195/WhatsApp%20Image%202026-11-08%20at%206.55.35%20PM.jpeg', gate: true },
     { k: 'p2',  l: 'Instagram',              slug: 'instagram' },
   
   ];
