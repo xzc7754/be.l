@@ -19,7 +19,7 @@
   var LINKS = {
     exclusivo: ['https://', 'openinap', 'p.link/6amke'],
     instagram: 'https://www.instagram.com/bel.psico_/',
-   
+ 
   };
 
   // Botones en el orden en que aparecen. Borra los que no uses.
@@ -30,9 +30,9 @@
   //   img  = (opcional) foto de tarjeta grande: pega aquí la URL de tu imagen de Blogger
   //   gate = true muestra primero el aviso +18
   var BOTONES = [
-    { k: 'p1',  l: 'Agenda tu consulta 🩵🤫', slug: 'exclusivo', img: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEilXrHSXIxzECSrgOx0mBEjRz81TynZd7CkE6c7SmMNY8-0vqsyOEC-YDMmJJjcNo-8yur-XcyGWtkb2RkVcQ8Hegq8d3Fc4WP2hFC1EDmpWU_fNCAVQdtZVBG_6UcDBwu5HjFn29jH4Odhu5HdaA1xwEj7nxEpoCySKIFZnrhFZZkd7X70mpDwHFw5waev/s1195/WhatsApp%20Image%202026-11-08%20at%206.55.35%20PM.jpeg', gate: true },
+    { k: 'p1',  l: 'Agenda tu consulta 💙🤭', slug: 'exclusivo', img: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEilXrHSXIxzECSrgOx0mBEjRz81TynZd7CkE6c7SmMNY8-0vqsyOEC-YDMmJJjcNo-8yur-XcyGWtkb2RkVcQ8Hegq8d3Fc4WP2hFC1EDmpWU_fNCAVQdtZVBG_6UcDBwu5HjFn29jH4Odhu5HdaA1xwEj7nxEpoCySKIFZnrhFZZkd7X70mpDwHFw5waev/s1195/WhatsApp%20Image%202026-11-08%20at%206.55.35%20PM.jpeg', gate: true },
     { k: 'p2',  l: 'Instagram',              slug: 'instagram' },
-  
+   
   ];
 
   // ===============================================================
@@ -109,27 +109,6 @@
     if (conRespaldo) vigilar(t, ms);
   }
 
-  // Pantalla completa "Abrir en el navegador"
-  function pantalla(t) {
-    if (document.getElementById('h')) return;
-    var largo = ios && app && !ig && !th;   // iOS sin esquema directo: pulsación larga
-    var d = el('div'); d.id = 'h';
-    var tit = el('strong'); tit.textContent = 'Abrir en tu navegador';
-    var a = el('a'); a.href = t; a.textContent = largo ? 'Abrir' : 'Abrir en el navegador';
-    a.addEventListener('click', function (e) {
-      e.preventDefault();
-      if (!largo) salir(t, true);
-    });
-    var p = el('p');
-    p.textContent = largo
-      ? 'Mantén pulsado el botón 3 segundos y toca Abrir.'
-      : 'Toca Abrir y confirma el aviso de la app.';
-    var p2 = el('p');
-    p2.textContent = 'Si no pasa nada, usa el menú de la app (⋯) y elige “Abrir en el navegador”, o copia la dirección en Safari o Chrome.';
-    d.appendChild(tit); d.appendChild(a); d.appendChild(p); d.appendChild(p2);
-    document.body.appendChild(d);
-  }
-
   // propio: true = es esta misma página (sin recarga de respaldo para no entrar en bucle)
   function salir(t, propio) {
     var enc = encodeURIComponent(t);
@@ -137,16 +116,18 @@
     if (ios && ig) return ir('instagram://extbrowser/?url=' + enc, t, 1600, !propio);
     if (ios && th) return ir('barcelona://extbrowser/?url=' + enc, t, 1600, !propio);
     if (and && app) return ir('intent://' + hp + '#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=' + enc + ';end', t, 2600, !propio);
-    if (ios && app) return pantalla(t);
-    location.assign(t);
+    location.assign(t);   // sin forma de salir (p. ej. TikTok en iPhone): se abre dentro de la app
   }
+
+  // ¿Hay forma de abrir fuera de esta app? (Android: Chrome; iPhone: Instagram y Threads)
+  var puedeSalir = and || (ios && (ig || th));
 
   // ---------- Entrada directa a /go/nombre (desde otra pestaña, etc.) ----------
   var aterrizaje = slugDe(location.pathname);
   var objetivo = null;
   if (aterrizaje !== null) {
     objetivo = dest(aterrizaje);
-    if (!app) {
+    if (!app || !puedeSalir || !objetivo) {
       document.documentElement.style.visibility = 'hidden';
       location.replace(objetivo || '/');
       return;
@@ -213,15 +194,13 @@
 
   document.addEventListener('visibilitychange', function () {
     if (document.hidden) return;
-    var h = document.getElementById('h');
-    if (h) h.remove();
     reposo();
   });
 
-  // ---------- Navegador interno: obligar a salir nada más entrar ----------
-  if (app) {
-    var t0 = objetivo || location.href;
-    pantalla(t0);
-    if (and) salir(t0, !objetivo);
+  // ---------- Navegador interno: intentar salir nada más entrar ----------
+  // Solo es un intento: si la app no lo permite, la web se queda funcionando normal
+  // (sin bloqueo). Cada botón vuelve a intentar salir al tocarlo.
+  if (app && puedeSalir) {
+    salir(objetivo || location.href, !objetivo);
   }
 })();
