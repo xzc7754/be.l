@@ -4,8 +4,10 @@
 
 
   var LINKS = {
-    exclusivo: ['https://', 'openinap', 'p.link/6amke'],
+
     instagram: 'https://www.instagram.com/bel.psico_/',
+    tiktok:    'https://www.tiktok.com/@belpsicooo',
+
    
   };
 
@@ -16,9 +18,9 @@
   //   img  = (opcional) foto de tarjeta grande: pega aquí la URL de tu imagen de Blogger
   //   gate = true muestra primero el aviso +18
   var BOTONES = [
-    { k: 'p1',  l: 'Agenda tu consulta 🩵🤫', slug: 'exclusivo', img: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEilXrHSXIxzECSrgOx0mBEjRz81TynZd7CkE6c7SmMNY8-0vqsyOEC-YDMmJJjcNo-8yur-XcyGWtkb2RkVcQ8Hegq8d3Fc4WP2hFC1EDmpWU_fNCAVQdtZVBG_6UcDBwu5HjFn29jH4Odhu5HdaA1xwEj7nxEpoCySKIFZnrhFZZkd7X70mpDwHFw5waev/s1195/WhatsApp%20Image%202026-11-08%20at%206.55.35%20PM.jpeg', gate: true },
+   
     { k: 'p2',  l: 'Instagram',              slug: 'instagram' },
-  
+  { k: 'p3',  l: 'TikTok',                 slug: 'tiktok' },
   ];
 
   // ===============================================================
